@@ -1,0 +1,20 @@
+/* Hide scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.custom-progress.swiper-pagination-progressbar {
+  position: relative !important;
+  width: 100% !important;
+  top: auto !important;
+  left: auto !important;
+}
+
+.custom-progress .swiper-pagination-progressbar-fill {
+  background-color: #1758DA !important;
+  border-radius: 9999px;
+}

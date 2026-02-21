@@ -5,9 +5,31 @@
   --foreground: #171717;
 }
 
+/* Tambahkan warna custom di sini */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  --color-e-primary: #1758DA;
+  --color-e-secondary: #D6E0FB;
+  --color-e-gray: #F4F6F9;
+  --color-e-success: #3AC278;
+  --color-e-success-dark: #01582E;
+  --color-e-warning: #FFCC00;
+  --color-e-low-warning: #FFF3CC;
+  --color-e-text: #2B3A4B;
+  --color-e-gray-border: #EBEEF2;
+  --color-e-gray-border-tab: #DADEE3;
+  --color-e-gray-text: #858C94;
+
+   /* Background Gradients (v4 way) */
+   --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+   --background-image-gradient-conic: conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops));
+   --background-image-gradient-primary: linear-gradient(270deg, #0B3C88 0%, #1758DA 100%);
+   --background-image-gradient-secondary: linear-gradient(180deg, #55BBE5 0%, #3A81BE 100%);
+   --background-image-gradient-success: linear-gradient(90deg, #02BE63 0%, #01582E 85%);
+   --background-image-gradient-success-soft: linear-gradient(354.49deg, #01582E -26.69%, #47CB52 77.51%);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -20,6 +42,7 @@
 }
 
 body {
+  @apply text-sm;
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
