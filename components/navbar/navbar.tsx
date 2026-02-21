@@ -18,7 +18,7 @@ export default function Navbar() {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 z-50 w-full bg-white/90 backdrop-blur shadow-sm">
+    <header className="fixed top-0 z-50 w-full bg-white backdrop-blur shadow-sm">
       <nav className="mx-auto max-w-7xl flex h-[5.5rem] items-center justify-between px-4 text-slate-700">
         {/* LOGO */}
         <Link href="/" className="flex items-center">
@@ -38,27 +38,32 @@ export default function Navbar() {
           onClick={() => setIsToggleOpen(!isToggleOpen)}
           aria-label="Toggle navigation"
         >
-          {/* <span
-            className={`absolute left-1/2 top-1/2 block h-0.5 w-6 bg-slate-900 transition-all duration-300
-              ${isToggleOpen ? "rotate-45" : "-translate-y-2"}`}
-          />
-          <span
-            className={`absolute left-1/2 top-1/2 block h-0.5 w-6 bg-slate-900 transition-all duration-300
-              ${isToggleOpen ? "-rotate-45" : "translate-y-2"}`}
-          /> */}
-
           <div className="absolute left-1/2 top-1/2 w-6 -translate-x-1/2 -translate-y-1/2 transform">
+            {/* TOP */}
             <span
               aria-hidden="true"
-              className={`absolute block h-0.5 w-9/12 -translate-y-2 transform rounded-full bg-slate-900 transition-all duration-300`}
+              className={`absolute block h-0.5 rounded-full bg-slate-900 transition-all duration-300 ${isToggleOpen
+                ? "rotate-45 translate-y-0 w-full"
+                : "-translate-y-2 w-9/12"
+                }`}
             />
+
+            {/* MIDDLE */}
             <span
               aria-hidden="true"
-              className={`absolute block h-0.5 w-6 transform rounded-full bg-slate-900 transition duration-300`}
+              className={`absolute block h-0.5 rounded-full bg-slate-900 transition-all duration-300 ${isToggleOpen
+                ? "opacity-0 scale-x-0 w-full"
+                : "opacity-100 scale-x-100 w-6"
+                }`}
             />
+
+            {/* BOTTOM */}
             <span
               aria-hidden="true"
-              className={`absolute block h-0.5 w-1/2 origin-top-left translate-y-2 transform rounded-full bg-slate-900 transition-all duration-300`}
+              className={`absolute block h-0.5 rounded-full bg-slate-900 transition-all duration-300 ${isToggleOpen
+                ? "-rotate-45 translate-y-0 w-full"
+                : "translate-y-2 w-1/2"
+                }`}
             />
           </div>
         </button>
@@ -66,7 +71,7 @@ export default function Navbar() {
         {/* MENU */}
         <ul
           className={`absolute top-full left-0 w-full bg-white lg:static lg:flex lg:w-auto lg:bg-transparent transition-all duration-300
-            ${isToggleOpen ? "opacity-100 visible" : "opacity-0 invisible lg:opacity-100 lg:visible"}`}
+            ${isToggleOpen ? "opacity-100 visible backdrop-blur shadow-sm" : "opacity-0 invisible lg:opacity-100 lg:visible"}`}
         >
           {menu.map((item, i) => (
             <li key={i} className="flex items-center">

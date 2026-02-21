@@ -84,12 +84,12 @@ export default function StepSection() {
             <div className="space-y-10">
               {steps.map((step, index) => {
                 const isLeft = index % 2 === 0;
+                const stepNumber = String(index + 1).padStart(2, "0");
 
                 return (
                   <div
                     key={index}
-                    className={`relative flex flex-col md:flex-row items-center ${isLeft ? "md:justify-start" : "md:justify-end"
-                      }`}
+                    className={`flex flex-col md:flex-row items-center ${isLeft ? "md:justify-start" : "md:justify-end"}`}
                   >
                     {/* Center Icon (desktop) */}
                     <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-e-primary text-white items-center justify-center z-10">
@@ -113,12 +113,18 @@ export default function StepSection() {
                         duration: 0.6,
                         ease: "easeOut",
                       }}
-                      className={`w-full md:w-[46%] rounded-2xl bg-white p-8 shadow-lg border border-slate-100 ${isLeft ? "md:mr-auto" : "md:ml-auto"
-                        }`}
+                      className={`relative w-full md:w-[46%] rounded-2xl bg-white p-8 shadow-lg border border-slate-100 ${isLeft ? "md:mr-auto" : "md:ml-auto"}`}
                     >
                       {/* Mobile Icon */}
                       <div className="md:hidden w-12 h-12 mb-4 rounded-xl bg-e-primary text-white flex items-center justify-center">
                         <step.icon size={20} />
+                      </div>
+
+                      {/* NUMBERING (DESKTOP ONLY) */}
+                      <div
+                        className="absolute top-14 md:top-1/2 -translate-y-1/2 text-4xl font-bold text-e-warning/50 select-none right-8 text-right"
+                      >
+                        {stepNumber}
                       </div>
 
                       <h3 className="text-lg font-semibold text-slate-900 mb-2">

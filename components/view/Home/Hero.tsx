@@ -8,7 +8,7 @@ import BasicLayout from "@/components/layout/BasicLayout";
 
 export default function Hero() {
   return (
-    <section className="w-full pt-20 overflow-hidden">
+    <section className="w-full pt-20 pb-10 overflow-hidden">
       <BasicLayout>
         <div className="h-full flex flex-col-reverse items-center justify-center gap-10 lg:flex-row">
 
