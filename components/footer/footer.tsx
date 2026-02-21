@@ -126,12 +126,12 @@ export default function Footer() {
                 <div className="h-px w-full bg-white/20" />
 
                 {/* BOTTOM */}
-                <div className="flex flex-col md:flex-row items-center justify-between gap-4 py-4 text-sm text-white/80">
-                    <Paragraph className="text-white/80">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4 py-4 text-white/80">
+                    <Paragraph level={1} className="text-white/80">
                         &copy; 2026 Samudra. All rights reserved
                     </Paragraph>
 
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 text-xs md:text-sm">
                         <Link href="/" className="hover:text-white">
                             Syarat & Ketentuan
                         </Link>
