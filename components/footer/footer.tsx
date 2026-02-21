@@ -31,14 +31,14 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 py-14">
                     {/* LOGO  */}
                     <div className="space-y-4">
-                        <div className="w-40 h-16 relative hidden">
-                            <Image
-                                src="/images/logos/app-logo-2.png"
-                                fill
-                                className="object-contain object-left"
-                                alt="logo"
-                            />
-                        </div>
+                        <Image
+                            src="/images/logos/app-logo-2.png"
+                            alt="Samudra Logo"
+                            width={50}
+                            height={80}
+                            priority
+                            className="object-contain hidden"
+                        />
 
                         <Paragraph level={2} className="font-semibold text-white">
                             Tentang Kami
@@ -76,9 +76,9 @@ export default function Footer() {
 
                         <a
                             href="mailto:samudratrophy@gmail.com"
-                            className="flex gap-3 items-start text-white/90 hover:text-white transition"
+                            className="flex gap-3 items-center text-white/90 hover:text-white transition"
                         >
-                            <Mail className="w-5 h-5 mt-0.5" />
+                            <Mail className="w-5 h-5" />
                             <Paragraph level={1} className="text-white/90">
                                 samudratrophy@gmail.com
                             </Paragraph>
@@ -87,9 +87,9 @@ export default function Footer() {
                         <a
                             href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_ADMIN}`}
                             target="_blank"
-                            className="flex gap-3 items-start text-white/90 hover:text-white transition"
+                            className="flex gap-3 items-center text-white/90 hover:text-white transition"
                         >
-                            <Phone className="w-5 h-5 mt-0.5" />
+                            <Phone className="w-5 h-5" />
                             <Paragraph level={1} className="text-white/90">
                                 {formatPhoneNumber(
                                     process.env.NEXT_PUBLIC_WHATSAPP_ADMIN || ""
@@ -98,7 +98,7 @@ export default function Footer() {
                         </a>
 
                         <div className="flex gap-3 items-start text-white/90">
-                            <MapPin className="w-5 h-5 mt-1 shrink-0" />
+                            <MapPin className="w-5 h-5 shrink-0" />
                             <Paragraph level={1} className="text-white/90 leading-relaxed">
                                 Jl. Menteri Supeno No.45, Pandeyan, Kec. Umbulharjo,
                                 Kota Yogyakarta, DI Yogyakarta 55162
@@ -112,8 +112,8 @@ export default function Footer() {
                             Jam Operasional
                         </Paragraph>
 
-                        <div className="flex gap-3 items-start text-white/90">
-                            <Clock className="w-5 h-5 mt-1" />
+                        <div className="flex gap-3 items-center text-white/90">
+                            <Clock className="w-5 h-5" />
                             <Paragraph level={1} className="text-white/90">
                                 Senin – Sabtu <br />
                                 09:00 – 19:00 WIB
