@@ -42,10 +42,23 @@ const testimonials = [
 ];
 
 export default function TestimonialSection() {
+  const duplicatedTestimonials = Array(2)
+    .fill(testimonials)
+    .flat();
+
   return (
-    <section className="bg-slate-100 py-10 overflow-hidden">
+    <section className="relative bg-slate-100 py-10 overflow-hidden">
+      {/* BACKGROUND */}
+      <div className="absolute inset-0">
+        <div
+          className="absolute inset-0 bg-cover bg-top opacity-50"
+          style={{
+            backgroundImage: "url('/images/background/bg-5.svg')",
+          }}
+        />
+      </div>
       <BasicLayout>
-        <div className="mx-auto px-4">
+        <div className="relative z-10 mx-auto px-4">
           {/* Heading */}
           <div className="text-center mb-16">
             <motion.div
@@ -79,7 +92,13 @@ export default function TestimonialSection() {
           </div>
 
           {/* Swiper + Navigation */}
-          <div className="relative">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="relative"
+          >
             {/* Navigation Buttons */}
             <button className="testimonial-prev absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow border border-slate-300 flex items-center justify-center hover:bg-slate-100 transition">
               <ChevronLeft />
@@ -103,15 +122,9 @@ export default function TestimonialSection() {
                 1024: { slidesPerView: 3 },
               }}
             >
-              {testimonials.map((item, index) => (
+              {duplicatedTestimonials.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
-                  >
+                  <div className="h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
                     {/* Header */}
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-10 h-10 rounded-full bg-e-primary text-white flex items-center justify-center font-semibold uppercase">
@@ -136,11 +149,11 @@ export default function TestimonialSection() {
                     <p className="text-sm text-slate-600 leading-relaxed">
                       {item.text}
                     </p>
-                  </motion.div>
+                  </div>
                 </SwiperSlide>
               ))}
             </Swiper>
-          </div>
+          </motion.div>
         </div>
       </BasicLayout>
     </section>

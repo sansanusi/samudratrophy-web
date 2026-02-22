@@ -8,7 +8,7 @@ import BasicLayout from "@/components/layout/BasicLayout";
 
 export default function Hero() {
   return (
-    <section className="relative w-full pb-10 overflow-hidden">
+    <section className="relative w-full pt-20 pb-10 overflow-hidden">
       {/* BACKGROUND */}
       <div className="absolute inset-0">
         <div

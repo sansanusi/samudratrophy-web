@@ -17,9 +17,18 @@ const clients = Array.from({ length: 12 });
 
 export default function ClientSection() {
   return (
-    <section className="bg-white py-10 overflow-hidden">
+    <section className="relative bg-white py-10 overflow-hidden">
+      {/* BACKGROUND */}
+      <div className="absolute inset-0">
+        <div
+          className="absolute inset-0 bg-cover bg-top opacity-50"
+          style={{
+            backgroundImage: "url('/images/background/bg-3.svg')",
+          }}
+        />
+      </div>
       <BasicLayout>
-        <div className="mx-auto">
+        <div className="relative z-10 mx-auto">
           {/* Heading */}
           <div className="text-center mb-10">
             <motion.div

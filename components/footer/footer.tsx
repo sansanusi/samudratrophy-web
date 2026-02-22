@@ -25,7 +25,16 @@ export default function Footer() {
     };
 
     return (
-        <footer className="bg-slate-900 text-white">
+        <footer className="relative bg-slate-900 text-white">
+            {/* BACKGROUND */}
+            <div className="absolute inset-0">
+                <div
+                    className="absolute inset-0 bg-cover bg-top opacity-50"
+                    style={{
+                        backgroundImage: "url('/images/background/bg-4.svg')",
+                    }}
+                />
+            </div>
             <BasicLayout>
                 {/* TOP */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 py-14">
@@ -59,6 +68,7 @@ export default function Footer() {
                                     href="#"
                                     aria-label={label}
                                     target="_blank"
+                                    rel="noopener noreferrer"
                                     className="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition"
                                 >
                                     <Icon className="w-4 h-4 text-white" />
@@ -87,6 +97,7 @@ export default function Footer() {
                         <a
                             href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_ADMIN}`}
                             target="_blank"
+                            rel="noopener noreferrer"
                             className="flex gap-3 items-center text-white/90 hover:text-white transition"
                         >
                             <Phone className="w-5 h-5" />
