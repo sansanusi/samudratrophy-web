@@ -140,7 +140,7 @@ export default function ClientSection() {
 /* Client Card – Lazy Load Ready */
 function ClientCard() {
   return (
-    <div className="mb-8 h-24 rounded-xl border border-slate-200 bg-white flex items-center justify-center drop-shadow-md hover:shadow-md transition">
+    <div className="mb-8 h-24 rounded-xl border border-slate-200 bg-slate-200 flex items-center justify-center drop-shadow-md hover:shadow-md transition">
       {/* Placeholder sekarang, logo nanti */}
       CLIENT LOGO
     </div>

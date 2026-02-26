@@ -49,10 +49,10 @@ export default function Footer() {
                             className="object-contain hidden"
                         />
 
-                        <Paragraph level={2} className="font-semibold text-white">
+                        <Paragraph level={3} className="font-semibold text-white">
                             Tentang Kami
                         </Paragraph>
-                        <Paragraph level={1} className="text-white/90 leading-relaxed">
+                        <Paragraph level={2} className="text-white/90 leading-relaxed">
                             Lorem ipsum sit amet dolor. Lorem ipsum sit amet dolor.  Lorem ipsum sit amet dolor. Lorem ipsum sit amet dolor.
                         </Paragraph>
 
@@ -80,7 +80,7 @@ export default function Footer() {
 
                     {/* KONTAK */}
                     <div className="space-y-4">
-                        <Paragraph level={2} className="font-semibold text-white">
+                        <Paragraph level={3} className="font-semibold text-white">
                             Kontak
                         </Paragraph>
 
@@ -89,7 +89,7 @@ export default function Footer() {
                             className="flex gap-3 items-center text-white/90 hover:text-white transition"
                         >
                             <Mail className="w-5 h-5" />
-                            <Paragraph level={1} className="text-white/90">
+                            <Paragraph level={2} className="text-white/90">
                                 samudratrophy@gmail.com
                             </Paragraph>
                         </a>
@@ -101,7 +101,7 @@ export default function Footer() {
                             className="flex gap-3 items-center text-white/90 hover:text-white transition"
                         >
                             <Phone className="w-5 h-5" />
-                            <Paragraph level={1} className="text-white/90">
+                            <Paragraph level={2} className="text-white/90">
                                 {formatPhoneNumber(
                                     process.env.NEXT_PUBLIC_WHATSAPP_ADMIN || ""
                                 )}
@@ -110,7 +110,7 @@ export default function Footer() {
 
                         <div className="flex gap-3 items-start text-white/90">
                             <MapPin className="w-5 h-5 shrink-0" />
-                            <Paragraph level={1} className="text-white/90 leading-relaxed">
+                            <Paragraph level={2} className="text-white/90 leading-relaxed">
                                 Jl. Menteri Supeno No.45, Pandeyan, Kec. Umbulharjo,
                                 Kota Yogyakarta, DI Yogyakarta 55162
                             </Paragraph>
@@ -119,13 +119,13 @@ export default function Footer() {
 
                     {/* JAM BUKA */}
                     <div className="space-y-4">
-                        <Paragraph level={2} className="font-semibold text-white">
+                        <Paragraph level={3} className="font-semibold text-white">
                             Jam Operasional
                         </Paragraph>
 
                         <div className="flex gap-3 items-center text-white/90">
                             <Clock className="w-5 h-5" />
-                            <Paragraph level={1} className="text-white/90">
+                            <Paragraph level={2} className="text-white/90">
                                 Senin – Sabtu <br />
                                 09:00 – 19:00 WIB
                             </Paragraph>
@@ -138,7 +138,7 @@ export default function Footer() {
 
                 {/* BOTTOM */}
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4 py-4 text-white/80">
-                    <Paragraph level={1} className="text-white/80">
+                    <Paragraph level={2} className="text-white/80">
                         &copy; 2026 Samudra. All rights reserved
                     </Paragraph>
 

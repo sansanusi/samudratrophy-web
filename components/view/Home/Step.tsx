@@ -90,7 +90,7 @@ export default function StepSection() {
 
             <div className="hidden md:block absolute left-1/2 top-0 h-full border-l-2 border-dashed border-yellow-300 -translate-x-1/2" />
 
-            <div className="space-y-10">
+            <div className="space-y-10 md:space-y-5">
               {steps.map((step, index) => {
                 const isLeft = index % 2 === 0;
                 const stepNumber = String(index + 1).padStart(2, "0");

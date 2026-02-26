@@ -76,10 +76,20 @@ export default function Product() {
             >
               {Array.from({ length: 10 }).map((_, i) => (
                 <SwiperSlide key={i}>
-                  <Link href={`/produk/produk-${i + 1}`} className="hover:underline">
-                    <div className="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition p-4">
-                      <div className="h-48 bg-slate-200 rounded-lg mb-4" />
-                      <p className="font-medium">Produk {i + 1}</p>
+                  <Link href={`/product/product-${i + 1}`} className="hover:underline">
+                    <div className="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                      {/* IMAGE */}
+                      <div className="relative aspect-[4/5] rounded-t-xl overflow-hidden">
+                        {/* <img
+                          src="/images/dummy/product.jpg"
+                          alt="Produk"
+                          className="w-full h-full object-cover"
+                        /> */}
+                        <div className="h-full bg-slate-200" />
+                      </div>
+                      <div className="p-4">
+                        <p className="text-sm font-medium leading-snug line-clamp-2">Produk {i + 1}</p>
+                      </div>
                     </div>
                   </Link>
                 </SwiperSlide>

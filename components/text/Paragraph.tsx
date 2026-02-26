@@ -10,13 +10,15 @@ interface ParagraphProps
 const Paragraph = forwardRef<
   HTMLParagraphElement,
   ParagraphProps
->(({ children, className = "", level = 2, ...props }, ref) => {
+>(({ children, className = "", level = 3, ...props }, ref) => {
   const sizeClass =
     level === 1
-      ? "text-xs md:text-sm"
+      ? "text-xs"
       : level === 2
-        ? "text-sm md:text-base"
-        : "text-base md:text-lg";
+        ? "text-xs md:text-sm"
+        : level === 3
+          ? "text-sm md:text-base"
+          : "text-base md:text-lg";
 
   return (
     <p

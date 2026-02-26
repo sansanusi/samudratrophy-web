@@ -1,8 +1,8 @@
 import { Metadata } from "next";
-import ProductDetail from "@/components/view/Produk/ProductDetail";
+import Produk from "@/components/view/Product/Product";
 
 export const metadata: Metadata = {
-  title: "Samudra Trophy: Produk Detail",
+  title: "Samudra Trophy: Produk",
   description:
     "Solusi Souvenir di Kota Yogyakarta",
   alternates: {
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main>
-      <ProductDetail />
+      <Produk />
     </main>
   );
 }
