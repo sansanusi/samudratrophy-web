@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
+import QueryProvider from "@/providers/QueryProvider";
 import ScrollToTop from "@/components/layout/ScrollToTop";
 import Navbar from "@/components/navbar/navbar";
 import Footer from "@/components/footer/footer";
@@ -32,11 +33,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ScrollToTop />
-        <NextTopLoader />
-        <Navbar />
-        {children}
-        <Footer />
+        <QueryProvider>
+          <ScrollToTop />
+          <NextTopLoader />
+          <Navbar />
+          {children}
+          <Footer />
+        </QueryProvider>
       </body>
     </html>
   );
