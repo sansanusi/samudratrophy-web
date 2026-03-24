@@ -1,5 +1,7 @@
+import { Suspense } from "react";
 import { Metadata } from "next";
 import Produk from "@/components/view/Product/Product";
+import Spinner from "@/components/layout/Spinner";
 
 export const metadata: Metadata = {
   title: "Samudra Trophy: Produk",
@@ -13,7 +15,9 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main>
-      <Produk />
+      <Suspense fallback={<Spinner />}>
+        <Produk />
+      </Suspense>
     </main>
   );
 }
