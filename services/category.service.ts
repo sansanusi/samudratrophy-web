@@ -1,16 +1,16 @@
 import { api } from "@/lib/axios";
-import { Product, ProductPaginateResponse, ProductQueryParams } from "@/types/product";
+import { Category, CategoryPaginateResponse, CategoryQueryParams } from "@/types/category";
 import { buildQuery } from "@/lib/buildQuery";
 
-export const getProducts = async (
-    params?: ProductQueryParams
-): Promise<ProductPaginateResponse> => {
+export const getCategories = async (
+    params?: CategoryQueryParams
+): Promise<CategoryPaginateResponse> => {
     const query = buildQuery(params);
-    const res = await api.get(`/product?${query}`);
+    const res = await api.get(`/category?${query}`);
     return res.data;
 };
 
-export const getProductDetail = async (slug: string): Promise<Product> => {
-    const res = await api.get<Product>(`/product/${slug}`);
+export const getCategoryDetail = async (slug: string): Promise<Category> => {
+    const res = await api.get<Category>(`/category/${slug}`);
     return res.data;
 };

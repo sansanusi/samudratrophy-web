@@ -89,7 +89,7 @@ export default function Product() {
                         >
                             {isLoading && (
                                 <SwiperSlide>
-                                    <div className="p-6 text-center">Loading...</div>
+                                    <div className="h-60" />
                                 </SwiperSlide>
                             )}
 

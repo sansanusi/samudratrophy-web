@@ -4,7 +4,7 @@
 import BasicLayout from "@/components/layout/BasicLayout";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 // import { Heading, Paragraph } from "@/components/text";
-import CategoryFilter from "../Category/CategoryFilter";
+import CategoryFilter from "../Category/v2/CategoryFilter";
 import ProductData from "./ProductData";
 
 // const MotionHeading = motion(Heading);

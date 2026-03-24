@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 // import WhatsApp from "@/components/layout/WhatsApp";
 import Hero from "@/components/view/Home/Hero";
-import Category from "@/components/view/Home/Category";
+import Category from "@/components/view/Home/v2/Category";
 // import Product from "@/components/view/Home/Product";
 import Product from "@/components/view/Home/v2/Product";
 import WhyUs from "@/components/view/Home/WhyUs";
