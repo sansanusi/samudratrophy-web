@@ -1,10 +1,13 @@
 "use client";
 
+import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import BasicLayout from "@/components/layout/BasicLayout";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
+import Spinner from "@/components/layout/Spinner";
 import { Heading, Paragraph } from "@/components/text";
+import { useProductDetail } from "@/hooks/useProduct";
 import ProductGallery from "./ProductGallery";
 import OrderInfo from "./OrderInfo";
 
@@ -34,11 +37,13 @@ const fadeRight: Variants = {
 };
 
 export default function ProductDetailPage() {
-    const images: string[] = [
-        "https://1souvenir.com/wp-content/uploads/2026/02/PL374-Plakat-Logam-Bulat-PHE-NSO-Aceh.webp",
-        "https://1souvenir.com/wp-content/uploads/2026/02/DETAIL-PL374-Plakat-Logam-Bulat-PHE-NSO-Aceh.webp",
-        "https://1souvenir.com/wp-content/uploads/2026/02/DETAIL2-PL374-Plakat-Logam-Bulat-PHE-NSO-Aceh.webp",
-    ];
+    const params = useParams();
+    const slug = params?.slug as string;
+
+    const { data: product, isLoading } = useProductDetail(slug);
+
+    if (isLoading) return <Spinner />;
+    if (!product) return <div>Produk tidak ditemukan</div>;
 
     return (
         <>
@@ -46,9 +51,8 @@ export default function ProductDetailPage() {
                 <Breadcrumbs
                     items={[
                         { label: "Beranda", href: "/" },
-                        { label: "Plakat", href: "/" },
-                        { label: "Plakat Logam", href: "/" },
-                        { label: "Plakat Logam Bulat Kenang-kenangan dari Pertamina Hulu Energi North Sumatera Offshore (PHE NSO) Provinsi Aceh" },
+                        { label: product?.categoryRef?.[0]?.name || "Kategori", href: `/category/${product?.categoryRef?.[0]?.slug}` },
+                        { label: product?.name || "-" },
                     ]}
                 />
             </div>
@@ -74,7 +78,18 @@ export default function ProductDetailPage() {
                                 initial="hidden"
                                 animate="visible"
                             >
-                                <ProductGallery images={images} />
+                                <ProductGallery
+                                    images={[
+                                        ...(product?.image
+                                            ? [{
+                                                image: product?.image || "-",
+                                                imageId: product?.imageId || "-",
+                                                imageProvider: product?.imageProvider || "-",
+                                            }]
+                                            : []),
+                                        ...(product?.gallery || []),
+                                    ]}
+                                />
                             </motion.div>
 
                             {/* PRODUCT INFO */}
@@ -86,34 +101,18 @@ export default function ProductDetailPage() {
                                 className="space-y-6"
                             >
                                 <Heading level={3} className="font-bold leading-snug">
-                                    Plakat Logam Bulat Kenang-kenangan dari Pertamina Hulu
-                                    Energi North Sumatera Offshore
+                                    {product?.name || "-"}
                                 </Heading>
 
                                 <Paragraph>
-                                    ⭐ 4.8 · Lihat Ulasan Google
+                                    ⭐ {product?.rating || 0} · Lihat Ulasan
                                 </Paragraph>
 
                                 <div className="divide-y divide-dashed divide-gray-200">
-                                    <div className="flex gap-4 py-2">
-                                        <Paragraph className="w-24 font-semibold">Ukuran</Paragraph>
-                                        <Paragraph>20 × 14 × 5 cm</Paragraph>
-                                    </div>
-
-                                    <div className="flex gap-4 py-2">
-                                        <Paragraph className="w-24 font-semibold">Bahan</Paragraph>
-                                        <Paragraph>Logam, Kayu</Paragraph>
-                                    </div>
-
-                                    <div className="flex gap-4 py-2">
-                                        <Paragraph className="w-24 font-semibold">Teknik</Paragraph>
-                                        <Paragraph>Kuningan etsa, krom emas</Paragraph>
-                                    </div>
-
-                                    <div className="flex gap-4 py-2">
-                                        <Paragraph className="w-24 font-semibold">Deskripsi</Paragraph>
-                                        <Paragraph>Bludru hitam</Paragraph>
-                                    </div>
+                                    <Item label="Ukuran" value={product?.size} />
+                                    <Item label="Bahan" value={product?.material} />
+                                    <Item label="Teknik" value={product?.productionTech} />
+                                    <Item label="Deskripsi" value={product?.description} />
                                 </div>
                             </motion.div>
 
@@ -133,3 +132,10 @@ export default function ProductDetailPage() {
         </>
     );
 }
+
+const Item = ({ label, value }: { label: string; value?: string }) => (
+    <div className="flex gap-4 py-2">
+        <Paragraph className="w-24 shrink-0 font-semibold">{label}</Paragraph>
+        <Paragraph className="flex-1">{value || "-"}</Paragraph>
+    </div>
+);

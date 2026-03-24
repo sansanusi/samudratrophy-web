@@ -10,14 +10,15 @@ import CategoryProduct from "./v2/CategoryProduct";
 const MotionHeading = motion(Heading);
 const MotionParagraph = motion(Paragraph);
 
-export default function CategoryPage() {
+export default function CategoryPageSlug() {
     return (
         <>
             <div className="bg-slate-100 p-5 hidden md:block">
                 <Breadcrumbs
                     items={[
                         { label: "Beranda", href: "/" },
-                        { label: "Category", href: "#" },
+                        { label: "Plakat", href: "/" },
+                        { label: "Plakat Logam", href: "/" },
                     ]}
                 />
             </div>

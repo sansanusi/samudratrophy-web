@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import CategoryPageSlug from "@/components/view/Category/CategoryPageSlug";
+import CategoryPage from "@/components/view/Category/CategoryPage";
 
 export const metadata: Metadata = {
   title: "Samudra Trophy: Produk Kategori",
@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CateggoryBySlug() {
+export default function Category() {
   return (
     <main>
-      <CategoryPageSlug />
+      <CategoryPage />
     </main>
   );
 }

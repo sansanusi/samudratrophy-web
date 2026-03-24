@@ -1,4 +1,4 @@
-import { Category, Subcategory } from "./category";
+import { CategoryRef, SubcategoryRef } from "./category";
 import { GalleryImage } from "./gallery";
 import { PaginateResult } from "./paginate";
 
@@ -23,8 +23,8 @@ export interface Product {
 
     rating: number;
 
-    categoryRef: Category[];
-    subcategoryRef: Subcategory[];
+    categoryRef: CategoryRef[];
+    subcategoryRef: SubcategoryRef[];
 
     isAvailable: boolean;
     listNumber: number;

@@ -1,8 +1,8 @@
 import { Metadata } from "next";
-import CategoryPageSlug from "@/components/view/Category/CategoryPageSlug";
+import Produk from "@/components/view/Product/Product";
 
 export const metadata: Metadata = {
-  title: "Samudra Trophy: Produk Kategori",
+  title: "Samudra Trophy: Produk",
   description:
     "Solusi Souvenir di Kota Yogyakarta",
   alternates: {
@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CateggoryBySlug() {
+export default function Home() {
   return (
     <main>
-      <CategoryPageSlug />
+      <Produk />
     </main>
   );
 }

@@ -5,9 +5,11 @@ import { getProducts, getProductDetail } from "@/services/product.service";
 import { Product, ProductPaginateResponse, ProductQueryParams } from "@/types/product";
 
 export const useProduct = (params?: ProductQueryParams) => {
-    return useQuery<ProductPaginateResponse>({
+    return useQuery({
         queryKey: ["products", params],
         queryFn: () => getProducts(params),
+        //   keepPreviousData: true, // 🔥 anti flicker
+        staleTime: 1000 * 60 * 5, // 🔥 cache 5 menit
     });
 };
 

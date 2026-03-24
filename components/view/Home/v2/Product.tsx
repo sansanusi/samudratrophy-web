@@ -154,7 +154,7 @@ export default function Product() {
                             </div>
 
                             <div className="shrink-0">
-                                <Link href="category">
+                                <Link href="/product">
                                     <ButtonPrimaryOutline
                                         className="!rounded-full flex items-center gap-2"
                                         label={

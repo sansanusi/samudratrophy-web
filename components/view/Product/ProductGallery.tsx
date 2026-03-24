@@ -8,11 +8,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
+import { GalleryImage } from "@/types/gallery";
+
 import "swiper/css";
 import "yet-another-react-lightbox/styles.css";
 
 interface ProductGalleryProps {
-    images: string[];
+    images: GalleryImage[];
 }
 
 export default function ProductGallery({ images }: ProductGalleryProps) {
@@ -36,7 +38,7 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
                                 className="relative w-full h-full"
                             >
                                 <Image
-                                    src={img}
+                                    src={img?.image}
                                     alt={`Product ${i + 1}`}
                                     fill
                                     priority={i === 0}
@@ -69,7 +71,7 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
                         className={`cursor-pointer border rounded-lg p-1 ${i === activeIndex ? "border-blue-600" : "border-gray-200"}`}
                     >
                         <Image
-                            src={img}
+                            src={img?.image}
                             alt={`Thumb ${i + 1}`}
                             width={80}
                             height={80}
@@ -84,7 +86,7 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
                 open={open}
                 close={() => setOpen(false)}
                 index={activeIndex}
-                slides={images.map((src) => ({ src }))}
+                slides={images.map((src) => ({ src: src?.image || "-" }))}
                 plugins={[Zoom]}
             />
         </div>
