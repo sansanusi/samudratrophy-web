@@ -45,12 +45,12 @@ export default function WhyUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center text-white font-bold mb-16"
+            className="text-center text-white font-bold mb-10"
           >
             Kenapa Harus Kami ?
           </MotionHeading>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {items.map((item, i) => (
               <motion.div
                 key={i}

@@ -17,11 +17,20 @@ const clients = Array.from({ length: 12 });
 
 export default function ClientSection() {
   return (
-    <section className="bg-white py-10 overflow-hidden">
+    <section className="relative bg-white py-10 overflow-hidden">
+      {/* BACKGROUND */}
+      <div className="absolute inset-0">
+        <div
+          className="absolute inset-0 bg-cover bg-top opacity-50"
+          style={{
+            backgroundImage: "url('/images/background/bg-3.svg')",
+          }}
+        />
+      </div>
       <BasicLayout>
-        <div className="mx-auto">
+        <div className="relative z-10 mx-auto">
           {/* Heading */}
-          <div className="text-center mb-14">
+          <div className="text-center mb-10">
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: 80 }}
@@ -74,7 +83,7 @@ export default function ClientSection() {
           768: { slidesPerView: 4.5 },
           1024: { slidesPerView: 6 },
         }}
-        className="mb-8"
+      // className="mb-8"
       >
         {clients.map((_, i) => (
           <SwiperSlide key={`top-${i}`}>
@@ -115,7 +124,7 @@ export default function ClientSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mt-14 flex justify-center"
+        className="flex justify-center"
       >
         <ButtonPrimaryOutline
           className="!rounded-full"
@@ -131,7 +140,7 @@ export default function ClientSection() {
 /* Client Card – Lazy Load Ready */
 function ClientCard() {
   return (
-    <div className="h-24 rounded-xl border border-slate-200 bg-white flex items-center justify-center drop-shadow-md hover:shadow-md transition">
+    <div className="mb-8 h-24 rounded-xl border border-slate-200 bg-slate-200 flex items-center justify-center drop-shadow-md hover:shadow-md transition">
       {/* Placeholder sekarang, logo nanti */}
       CLIENT LOGO
     </div>

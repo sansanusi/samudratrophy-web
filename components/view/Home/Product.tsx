@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -16,9 +17,18 @@ import "swiper/css/pagination";
 
 export default function Product() {
   return (
-    <section className="my-10 md:my-20 overflow-hidden">
+    <section className="relative py-10 md:py-20 overflow-hidden">
+      {/* BACKGROUND */}
+      <div className="absolute inset-0">
+        <div
+          className="absolute inset-0 bg-cover bg-top opacity-50"
+          style={{
+            backgroundImage: "url('/images/background/bg-3.svg')",
+          }}
+        />
+      </div>
       <BasicLayout>
-        <div className="flex flex-col lg:flex-row gap-5">
+        <div className="relative z-10 flex flex-col lg:flex-row gap-5">
 
           {/* LEFT CONTENT – from left to right */}
           <motion.div
@@ -66,10 +76,22 @@ export default function Product() {
             >
               {Array.from({ length: 10 }).map((_, i) => (
                 <SwiperSlide key={i}>
-                  <div className="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition p-4">
-                    <div className="h-48 bg-slate-200 rounded-lg mb-4" />
-                    <p className="font-medium">Produk {i + 1}</p>
-                  </div>
+                  <Link href={`/product/product-${i + 1}`} className="hover:underline">
+                    <div className="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                      {/* IMAGE */}
+                      <div className="relative aspect-[4/5] rounded-t-xl overflow-hidden">
+                        {/* <img
+                          src="/images/dummy/product.jpg"
+                          alt="Produk"
+                          className="w-full h-full object-cover"
+                        /> */}
+                        <div className="h-full bg-slate-200" />
+                      </div>
+                      <div className="p-4">
+                        <p className="text-sm font-medium leading-snug line-clamp-2">Produk {i + 1}</p>
+                      </div>
+                    </div>
+                  </Link>
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -107,6 +129,6 @@ export default function Product() {
 
         </div>
       </BasicLayout>
-    </section>
+    </section >
   );
 }

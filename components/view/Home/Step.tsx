@@ -40,8 +40,17 @@ const steps = [
 export default function StepSection() {
   return (
     <section className="relative bg-slate-100 overflow-hidden">
+      {/* BACKGROUND */}
+      <div className="absolute inset-0">
+        <div
+          className="absolute inset-0 bg-cover bg-top opacity-50"
+          style={{
+            backgroundImage: "url('/images/background/bg-2.svg')",
+          }}
+        />
+      </div>
       <BasicLayout>
-        <div className="max-w-7xl mx-auto py-10">
+        <div className="relative z-10 max-w-7xl mx-auto py-10">
           {/* Heading */}
           <div className="text-center mb-10">
             <motion.div
@@ -81,15 +90,15 @@ export default function StepSection() {
 
             <div className="hidden md:block absolute left-1/2 top-0 h-full border-l-2 border-dashed border-yellow-300 -translate-x-1/2" />
 
-            <div className="space-y-10">
+            <div className="space-y-10 md:space-y-5">
               {steps.map((step, index) => {
                 const isLeft = index % 2 === 0;
+                const stepNumber = String(index + 1).padStart(2, "0");
 
                 return (
                   <div
                     key={index}
-                    className={`relative flex flex-col md:flex-row items-center ${isLeft ? "md:justify-start" : "md:justify-end"
-                      }`}
+                    className={`flex flex-col md:flex-row items-center ${isLeft ? "md:justify-start" : "md:justify-end"}`}
                   >
                     {/* Center Icon (desktop) */}
                     <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-e-primary text-white items-center justify-center z-10">
@@ -113,20 +122,34 @@ export default function StepSection() {
                         duration: 0.6,
                         ease: "easeOut",
                       }}
-                      className={`w-full md:w-[46%] rounded-2xl bg-white p-8 shadow-lg border border-slate-100 ${isLeft ? "md:mr-auto" : "md:ml-auto"
-                        }`}
+                      className={`w-full md:w-[46%] rounded-2xl bg-white p-8 shadow-lg border border-slate-100 ${isLeft ? "md:mr-auto" : "md:ml-auto"}`}
                     >
-                      {/* Mobile Icon */}
-                      <div className="md:hidden w-12 h-12 mb-4 rounded-xl bg-e-primary text-white flex items-center justify-center">
-                        <step.icon size={20} />
+                      <div className="flex justify-between gap-2">
+                        {/* Mobile Icon */}
+                        <div className="md:hidden w-12 h-12 mb-4 rounded-xl bg-e-primary text-white flex items-center justify-center">
+                          <step.icon size={20} />
+                        </div>
+
+                        <div className="md:hidden text-4xl font-bold text-e-warning/50 select-none right-8 text-right">
+                          {stepNumber}
+                        </div>
                       </div>
 
-                      <h3 className="text-lg font-semibold text-slate-900 mb-2">
-                        {step.title}
-                      </h3>
-                      <p className="text-slate-600 text-sm leading-relaxed">
-                        {step.desc}
-                      </p>
+                      <div className="flex justify-between gap-2">
+                        <div>
+                          <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                            {step.title}
+                          </h3>
+                          <p className="text-slate-600 text-sm leading-relaxed">
+                            {step.desc}
+                          </p>
+                        </div>
+
+                        <div className="hidden md:block text-4xl font-bold text-e-warning/50 select-none right-8 text-right">
+                          {stepNumber}
+                        </div>
+                      </div>
+
                     </motion.div>
                   </div>
                 );

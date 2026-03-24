@@ -8,9 +8,18 @@ import BasicLayout from "@/components/layout/BasicLayout";
 
 export default function Hero() {
   return (
-    <section className="w-full pt-20 overflow-hidden">
+    <section className="relative w-full pb-10 overflow-hidden">
+      {/* BACKGROUND */}
+      <div className="absolute inset-0">
+        <div
+          className="absolute inset-0 bg-cover bg-top opacity-50"
+          style={{
+            backgroundImage: "url('/images/background/bg-6.svg')",
+          }}
+        />
+      </div>
       <BasicLayout>
-        <div className="h-full flex flex-col-reverse items-center justify-center gap-10 lg:flex-row">
+        <div className="relative z-10 h-full flex flex-col-reverse items-center justify-center gap-10 lg:flex-row">
 
           {/* LEFT - TEXT (from left to right) */}
           <motion.div

@@ -25,21 +25,38 @@ export default function Footer() {
     };
 
     return (
-        <footer className="bg-slate-900 text-white">
+        <footer className="relative bg-slate-900 text-white">
+            {/* BACKGROUND */}
+            <div className="absolute inset-0">
+                <div
+                    className="absolute inset-0 bg-cover bg-top opacity-50"
+                    style={{
+                        backgroundImage: "url('/images/background/bg-4.svg')",
+                    }}
+                />
+            </div>
             <BasicLayout>
                 {/* TOP */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 py-14">
-                    {/* LOGO + SOCIAL */}
-                    <div className="flex flex-col gap-6">
-                        <div className="w-40 h-16 relative">
-                            <Image
-                                src="/images/logos/app-logo-2.png"
-                                fill
-                                className="object-contain object-left"
-                                alt="logo"
-                            />
-                        </div>
+                    {/* LOGO  */}
+                    <div className="space-y-4">
+                        <Image
+                            src="/images/logos/app-logo-2.png"
+                            alt="Samudra Logo"
+                            width={50}
+                            height={80}
+                            priority
+                            className="object-contain hidden"
+                        />
 
+                        <Paragraph level={3} className="font-semibold text-white">
+                            Tentang Kami
+                        </Paragraph>
+                        <Paragraph level={2} className="text-white/90 leading-relaxed">
+                            Lorem ipsum sit amet dolor. Lorem ipsum sit amet dolor.  Lorem ipsum sit amet dolor. Lorem ipsum sit amet dolor.
+                        </Paragraph>
+
+                        {/* SOCIAL  */}
                         <div className="flex gap-3">
                             {[
                                 { icon: SiInstagram, label: "Instagram" },
@@ -51,6 +68,7 @@ export default function Footer() {
                                     href="#"
                                     aria-label={label}
                                     target="_blank"
+                                    rel="noopener noreferrer"
                                     className="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition"
                                 >
                                     <Icon className="w-4 h-4 text-white" />
@@ -58,6 +76,7 @@ export default function Footer() {
                             ))}
                         </div>
                     </div>
+
 
                     {/* KONTAK */}
                     <div className="space-y-4">
@@ -67,10 +86,10 @@ export default function Footer() {
 
                         <a
                             href="mailto:samudratrophy@gmail.com"
-                            className="flex gap-3 items-start text-white/90 hover:text-white transition"
+                            className="flex gap-3 items-center text-white/90 hover:text-white transition"
                         >
-                            <Mail className="w-5 h-5 mt-0.5" />
-                            <Paragraph className="text-white/90">
+                            <Mail className="w-5 h-5" />
+                            <Paragraph level={2} className="text-white/90">
                                 samudratrophy@gmail.com
                             </Paragraph>
                         </a>
@@ -78,10 +97,11 @@ export default function Footer() {
                         <a
                             href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_ADMIN}`}
                             target="_blank"
-                            className="flex gap-3 items-start text-white/90 hover:text-white transition"
+                            rel="noopener noreferrer"
+                            className="flex gap-3 items-center text-white/90 hover:text-white transition"
                         >
-                            <Phone className="w-5 h-5 mt-0.5" />
-                            <Paragraph className="text-white/90">
+                            <Phone className="w-5 h-5" />
+                            <Paragraph level={2} className="text-white/90">
                                 {formatPhoneNumber(
                                     process.env.NEXT_PUBLIC_WHATSAPP_ADMIN || ""
                                 )}
@@ -89,8 +109,8 @@ export default function Footer() {
                         </a>
 
                         <div className="flex gap-3 items-start text-white/90">
-                            <MapPin className="w-5 h-5 mt-1 shrink-0" />
-                            <Paragraph className="text-white/90 leading-relaxed">
+                            <MapPin className="w-5 h-5 shrink-0" />
+                            <Paragraph level={2} className="text-white/90 leading-relaxed">
                                 Jl. Menteri Supeno No.45, Pandeyan, Kec. Umbulharjo,
                                 Kota Yogyakarta, DI Yogyakarta 55162
                             </Paragraph>
@@ -103,9 +123,9 @@ export default function Footer() {
                             Jam Operasional
                         </Paragraph>
 
-                        <div className="flex gap-3 items-start text-white/90">
-                            <Clock className="w-5 h-5 mt-1" />
-                            <Paragraph className="text-white/90">
+                        <div className="flex gap-3 items-center text-white/90">
+                            <Clock className="w-5 h-5" />
+                            <Paragraph level={2} className="text-white/90">
                                 Senin – Sabtu <br />
                                 09:00 – 19:00 WIB
                             </Paragraph>
@@ -117,12 +137,12 @@ export default function Footer() {
                 <div className="h-px w-full bg-white/20" />
 
                 {/* BOTTOM */}
-                <div className="flex flex-col md:flex-row items-center justify-between gap-4 py-4 text-sm text-white/80">
-                    <Paragraph className="text-white/80">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4 py-4 text-white/80">
+                    <Paragraph level={2} className="text-white/80">
                         &copy; 2026 Samudra. All rights reserved
                     </Paragraph>
 
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 text-xs md:text-sm">
                         <Link href="/" className="hover:text-white">
                             Syarat & Ketentuan
                         </Link>

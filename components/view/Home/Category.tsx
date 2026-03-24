@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 import { Heading, Paragraph } from "@/components/text";
 import BasicLayout from "@/components/layout/BasicLayout";
@@ -39,7 +40,7 @@ export default function Category() {
         >
           <Heading
             level={3}
-            className="font-semibold text-center text-e-gray"
+            className="font-semibold text-center"
           >
             Pilih Kategori Sesuai Kebutuhan Anda
           </Heading>
@@ -70,25 +71,18 @@ export default function Category() {
               className="flex gap-5 min-w-max lg:grid lg:grid-cols-5 xl:grid-cols-6 lg:min-w-0"
             >
               {dummyData.map((row, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 0.5,
-                    delay: i * 0.05,
-                    ease: "easeOut",
-                  }}
-                  className="flex-shrink-0 w-52 snap-start lg:w-auto p-4 bg-white border border-slate-200 rounded-lg shadow-sm hover:shadow-md transition duration-300"
-                >
-                  <div className="flex items-center justify-between h-10 gap-1">
-                    <div className="w-14 h-14 bg-slate-300 rounded-full" />
-                    <Paragraph level={1} className="text-center">
-                      {row.title}
-                    </Paragraph>
+                <Link key={i} href={`/category/category-${i + 1}`} className="hover:underline">
+                  <div
+                    className="flex-shrink-0 w-52 snap-start lg:w-auto p-4 bg-white border border-slate-200 rounded-lg shadow-sm hover:shadow-md transition duration-300"
+                  >
+                    <div className="flex items-center justify-between h-10 gap-1">
+                      <div className="w-14 h-14 bg-slate-300 rounded-full" />
+                      <Paragraph level={2} className="text-center">
+                        {row.title}
+                      </Paragraph>
+                    </div>
                   </div>
-                </motion.div>
+                </Link>
               ))}
             </motion.div>
           </div>
