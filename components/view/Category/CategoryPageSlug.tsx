@@ -1,26 +1,69 @@
 "use client";
 
+import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import BasicLayout from "@/components/layout/BasicLayout";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import { Heading, Paragraph } from "@/components/text";
-import CategoryFilter from "./CategoryFilter";
+import CategoryFilter from "./v2/CategoryFilter";
 import CategoryProduct from "./v2/CategoryProduct";
+import { useCategoryTree } from "@/hooks/useProduct";
 
 const MotionHeading = motion(Heading);
 const MotionParagraph = motion(Paragraph);
 
 export default function CategoryPageSlug() {
+    const params = useParams();
+    const slug = params?.slug as string;
+
+    const { data } = useCategoryTree();
+
+    const findCategoryPath = (categories: any[], slug: string) => {
+        for (const cat of categories) {
+            // jika parent
+            if (cat.slug === slug) {
+                return [cat];
+            }
+
+            // jika di subcategory
+            const sub = cat.subcategory?.find((s: any) => s.slug === slug);
+            if (sub) {
+                return [cat, sub];
+            }
+        }
+
+        return [];
+    };
+
+    const findCategory = (categories: any[], slug: string) => {
+        for (const cat of categories) {
+            if (cat.slug === slug) return cat;
+
+            const sub = cat.subcategory?.find((s: any) => s.slug === slug);
+            if (sub) return sub;
+        }
+        return null;
+    };
+
+    const categoryPath = data ? findCategoryPath(data, slug) : [];
+
+    const selectedCategory = data ? findCategory(data, slug) : null;
+
+    const breadcrumbItems = [
+        { label: "Beranda", href: "/" },
+        ...categoryPath.map((item, index) => ({
+            label: item.name,
+            href:
+                index === 0
+                    ? `/category/${item.slug}`
+                    : `/category/${item.slug}`, // bisa disesuaikan kalau pakai /page/1
+        })),
+    ];
+
     return (
         <>
             <div className="bg-slate-100 p-5 hidden md:block">
-                <Breadcrumbs
-                    items={[
-                        { label: "Beranda", href: "/" },
-                        { label: "Plakat", href: "/" },
-                        { label: "Plakat Logam", href: "/" },
-                    ]}
-                />
+                <Breadcrumbs items={breadcrumbItems} />
             </div>
             <section className="relative w-full md:pt-0 pb-10 overflow-hidden">
                 {/* BACKGROUND */}
@@ -46,7 +89,7 @@ export default function CategoryPageSlug() {
                                 transition={{ duration: 0.6 }}
                                 className="font-bold"
                             >
-                                Kategori
+                                {selectedCategory?.name || "Kategori"}
                             </MotionHeading>
 
                             <MotionParagraph
@@ -56,7 +99,9 @@ export default function CategoryPageSlug() {
                                 transition={{ duration: 0.6, delay: 0.1 }}
                                 className="mt-3 max-w-2xl mx-auto"
                             >
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                {selectedCategory?.description ? selectedCategory?.description :
+                                    `Produk kategori ${selectedCategory?.name} terbaik di Samudra Trophy`
+                                }
                             </MotionParagraph>
                         </div>
 

@@ -39,3 +39,14 @@ export interface SubcategoryRef {
     name: string;
     slug: string;
 }
+
+export interface CategoryTree {
+    name: string;
+    slug: string;
+    total: number;
+    subcategory: {
+        name: string;
+        slug: string;
+        total: number;
+    }[];
+};

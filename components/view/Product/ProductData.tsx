@@ -33,8 +33,16 @@ export default function ProductPage() {
 
     // ✅ ambil dari URL
     const page = Number(params?.page || 1);
-    const sort = searchParams.get("sort") || "createdAt";
     const perPage = Number(searchParams.get("limit") || 12);
+    const sortMap: Record<string, string> = {
+        terbaru: "createdAt",
+        terlama: "createdAt:asc",
+    };
+    const sortOrigin = searchParams.get("sort") || "terbaru";
+    // hasil untuk query API
+    const sort = sortMap[sortOrigin] || sortOrigin;
+    // untuk label UI
+    const sortLabel = Object.keys(sortMap).find((key) => sortMap[key] === sort) || sortOrigin;
 
     const { data, isLoading, isFetching } = useProduct({
         page,
@@ -98,8 +106,8 @@ export default function ProductPage() {
                             onChange={(e) => updateQuery({ sort: e.target.value })}
                             className="border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-e-primary"
                         >
-                            <option value="createdAt">Terbaru</option>
-                            <option value="createdAt:asc">Terlama</option>
+                            <option value="terbaru">Terbaru</option>
+                            <option value="terlama">Terlama</option>
                         </select>
                     </div>
 
@@ -167,7 +175,7 @@ export default function ProductPage() {
                                 Prev
                             </div>
                         ) : (
-                            <Link href={`/product/page/${currentPage - 1}?sort=${sort}&limit=${perPage}`}>
+                            <Link href={`/product/page/${currentPage - 1}?sort=${sortLabel}&limit=${perPage}`}>
                                 <div className="px-3 py-2 border border border-slate-300 text-sm text-slate-600 hover:bg-slate-100 rounded-lg">
                                     Prev
                                 </div>
@@ -178,7 +186,7 @@ export default function ProductPage() {
                         {visiblePages.map((p) => (
                             <Link
                                 key={p}
-                                href={`/product/page/${p}?sort=${sort}&limit=${perPage}`}
+                                href={`/product/page/${p}?sort=${sortLabel}&limit=${perPage}`}
                             >
                                 <div
                                     className={`px-3 py-2 text-sm rounded-lg border ${p === currentPage
@@ -197,7 +205,7 @@ export default function ProductPage() {
                                 Next
                             </div>
                         ) : (
-                            <Link href={`/product/page/${currentPage + 1}?sort=${sort}&limit=${perPage}`}>
+                            <Link href={`/product/page/${currentPage + 1}?sort=${sortLabel}&limit=${perPage}`}>
                                 <div className="px-3 py-2 border border-slate-300 text-sm text-slate-600 rounded-lg">
                                     Next
                                 </div>

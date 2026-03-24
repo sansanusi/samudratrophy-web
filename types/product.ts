@@ -39,6 +39,7 @@ export interface ProductQueryParams {
     search?: string;
     category?: string;
     subcategory?: string;
+    filter?: string;
     isAvailable?: boolean;
     sort?: string;
 }
