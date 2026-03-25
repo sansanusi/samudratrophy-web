@@ -29,14 +29,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${name} - Samudra Trophy`,
-    description: `Produk kategori ${name} terbaik di Samudra Trophy`,
+    description: `Produk ${name} terbaik di Samudra Trophy`,
     keywords,
     alternates: {
       canonical: `https://samudratrophy.com/product/${slug}`,
     },
     openGraph: {
       title: `${name} - Samudra Trophy`,
-      description: `Produk kategori ${name} terbaik dan custom di Samudra Trophy`,
+      description: `Produk ${name} terbaik dan custom di Samudra Trophy`,
       url: `https://samudratrophy.com/product/${slug}`,
       siteName: "Samudra Trophy",
       type: "website",

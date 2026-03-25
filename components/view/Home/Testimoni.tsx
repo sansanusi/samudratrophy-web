@@ -100,11 +100,11 @@ export default function TestimonialSection() {
             className="relative"
           >
             {/* Navigation Buttons */}
-            <button className="testimonial-prev absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow border border-slate-300 flex items-center justify-center hover:bg-slate-100 transition">
+            <button className="cursor-pointer testimonial-prev absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow border border-slate-300 flex items-center justify-center hover:bg-slate-100 transition">
               <ChevronLeft />
             </button>
 
-            <button className="testimonial-next absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow border border-slate-300 flex items-center justify-center hover:bg-slate-100 transition">
+            <button className="cursor-pointer testimonial-next absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow border border-slate-300 flex items-center justify-center hover:bg-slate-100 transition">
               <ChevronRight />
             </button>
 

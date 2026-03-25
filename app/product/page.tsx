@@ -4,7 +4,7 @@ import Produk from "@/components/view/Product/Product";
 import Spinner from "@/components/layout/Spinner";
 
 export const metadata: Metadata = {
-  title: "Samudra Trophy: Produk",
+  title: "Produk - Samudra Trophy",
   description:
     "Solusi Souvenir di Kota Yogyakarta",
   alternates: {

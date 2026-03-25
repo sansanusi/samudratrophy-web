@@ -89,7 +89,7 @@ export default function Category() {
                   <div className="h-20 flex items-center gap-4 p-4 rounded-2xl bg-white backdrop-blur border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group">
                     {/* ICON */}
                     <div className="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center group-hover:scale-110 transition">
-                      <Star className="w-5 h-5 text-e-primary" />
+                      <Star className="w-6 h-6 text-e-primary" />
                     </div>
                     {/* TEXT */}
                     <Paragraph level={2}>
