@@ -82,7 +82,7 @@ export default function CategoryPageSlug() {
                         {/* Heading */}
                         <div className="text-center mb-16">
                             <MotionHeading
-                                level={2}
+                                level={1}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}

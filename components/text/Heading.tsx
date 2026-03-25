@@ -64,7 +64,7 @@ const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
         return (
           <h6
             ref={ref}
-            className={`text-sm md:text-base text-e-text ${className}`}
+            className={`text-xs md:text-sm text-e-text ${className}`}
             {...props}
           >
             {children}
@@ -74,7 +74,7 @@ const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
         return (
           <h1
             ref={ref}
-            className={`text-3xl md:text-4xl lg:text-5xl text-e-text ${className}`}
+            className={`text-2xl md:text-3xl lg:text-4xl text-e-text ${className}`}
             {...props}
           >
             {children}

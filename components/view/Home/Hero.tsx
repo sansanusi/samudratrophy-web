@@ -35,15 +35,16 @@ export default function Hero() {
               level={1}
               className="font-bold !text-e-primary"
             >
-              Dirancang untuk Diberikan <br className="hidden md:block" />
-              dengan Percaya Diri
+              {/* Dirancang untuk Diberikan <br className="hidden md:block" />
+              dengan Percaya Diri */}
+              Jasa Pembuatan Trophy & Souvenir Custom Berkualitas di Yogyakarta
             </Heading>
 
             <Heading
               level={4}
               className="font-medium text-e-gray"
             >
-              Souvenir custom untuk momen yang layak dikenang.
+              Souvenir custom untuk meningkatkan nilai setiap acara.
             </Heading>
           </motion.div>
 

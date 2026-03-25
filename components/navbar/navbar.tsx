@@ -9,6 +9,7 @@ import { Search } from "lucide-react";
 import { ButtonPrimary } from "../button/Button";
 
 const menu = [
+  { name: "Produk", path: "/product" },
   { name: "Profil", path: "/" },
   { name: "Galeri", path: "/" },
   { name: "Kontak", path: "/" },
